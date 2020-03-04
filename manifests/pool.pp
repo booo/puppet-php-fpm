@@ -1,4 +1,4 @@
-define php-fpm::pool(
+define php_fpm::pool(
   $ensure = present,
   $user = 'www-data',
   $group = 'www-data',
@@ -19,7 +19,7 @@ define php-fpm::pool(
 ) {
   file { "/etc/php/7.0/fpm/pool.d/${name}.conf":
     ensure  => $ensure,
-    content => template('php-fpm/pool.conf.erb'),
-    notify  => Class['Php-fpm::Service'],
+    content => template('php_fpm/pool.conf.erb'),
+    notify  => Class['php_fpm::service'],
   }
 }

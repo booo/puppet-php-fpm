@@ -1,4 +1,4 @@
-class php-fpm(
+class php_fpm(
   $ensure = 'present',
   $pid = '/var/run/php-fpm.pid',
   $error_log = '/var/log/php-fpm.log',
@@ -14,16 +14,16 @@ class php-fpm(
   $rlimit_core = undef,
   $events_mechanism = undef,
 ){
-  anchor { 'php-fpm::begin':
-    before => Class['php-fpm::install'],
-    notify => Class['php-fpm::service'],
+  anchor { 'php_fpm::begin':
+    before => Class['php_fpm::install'],
+    notify => Class['php_fpm::service'],
   }
-  class { 'php-fpm::install':
+  class { 'php_fpm::install':
     ensure => $ensure,
-    notify => Class['php-fpm::service'],
+    notify => Class['php_fpm::service'],
   }
-  class { 'php-fpm::service': }
-  anchor { 'php-fpm::end':
-    require => Class['php-fpm::service'],
+  class { 'php_fpm::service': }
+  anchor { 'php_fpm::end':
+    require => Class['php_fpm::service'],
   }
 }

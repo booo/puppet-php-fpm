@@ -1,4 +1,4 @@
-name 'php-fpm'
+name 'php_fpm'
 version '0.0.1'
 source 'https://github.com/booo/puppet-php-fpm.git'
 author 'Philipp Borgers'
