@@ -1,19 +1,20 @@
-class php_fpm(
-  $ensure = 'present',
-  $pid = '/var/run/php-fpm.pid',
-  $error_log = '/var/log/php-fpm.log',
-  $syslog_facility = 'daemon',
-  $syslog_ident = 'php-fpm',
-  $log_level = 'notice',
-  $emergency_restart_threshold = 0,
-  $emergency_restart_interval = 0,
-  $process_control_timeout = 0,
-  $process_max = 0,
-  $daemonize = yes,
-  $rlimit_files = undef,
-  $rlimit_core = undef,
-  $events_mechanism = undef,
-){
+class php_fpm (
+  $ensure = $php_fpm::params::ensure,
+  $pid = $php_fpm::params::pid,
+  $error_log = $php_fpm::params::error_log,
+  $syslog_facility = $php_fpm::params::syslog_facility,
+  $syslog_ident = $php_fpm::params::syslog_ident,
+  $log_level = $php_fpm::params::log_level,
+  $emergency_restart_threshold = $php_fpm::params::emergency_restart_threshold,
+  $emergency_restart_interval = $php_fpm::params::emergency_restart_interval,
+  $process_control_timeout = $php_fpm::params::process_control_timeout,
+  $process_max = $php_fpm::params::process_max,
+  $daemonize = $php_fpm::params::daemonize,
+  $rlimit_files = $php_fpm::params::rlimit_files,
+  $rlimit_core = $php_fpm::params::rlimit_core,
+  $events_mechanism = $php_fpm::params::events_mechanism,
+) inherits php_fpm::params {
+
   anchor { 'php_fpm::begin':
     before => Class['php_fpm::install'],
     notify => Class['php_fpm::service'],
