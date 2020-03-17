@@ -1,6 +1,6 @@
-class php-fpm::service {
-  service { 'php7.0-fpm':
-    ensure   => running,
-    enable   => true,
+class php_fpm::service {
+  service { 'php7.2-fpm':
+    ensure => running,
+    enable => true,
   }
 }
